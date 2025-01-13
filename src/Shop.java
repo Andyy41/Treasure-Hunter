@@ -44,7 +44,7 @@ public class Shop {
             System.out.println(Colors.GREEN + "Welcome to the shop! We have the finest wares in town.");
             System.out.println("Currently we have the following items:");
             System.out.println(inventory());
-            System.out.print(Colors.RESET + "What're you lookin' to buy? ");
+            System.out.print(Colors.RESET + Colors.BLUE + "What're you lookin' to buy? " + Colors.RESET);
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, true);
             if (cost == 0) {
