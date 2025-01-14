@@ -191,4 +191,7 @@ public class Hunter {
         }
         return -1;
     }
+    public int getGold() {
+        return gold;
+    }
 }
