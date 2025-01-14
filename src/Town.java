@@ -123,17 +123,19 @@ public class Town {
      * @return A Terrain object.
      */
     private Terrain getNewTerrain() {
-        double rnd = Math.random();
-        if (rnd < .2) {
-            return new Terrain("Mountains", "Rope");
-        } else if (rnd < .4) {
-            return new Terrain("Ocean", "Boat");
-        } else if (rnd < .6) {
-            return new Terrain("Plains", "Horse");
-        } else if (rnd < .8) {
-            return new Terrain("Desert", "Water");
+         int rnd = (int) (Math.random() *6);
+        if (rnd == 0 ) {
+            return new Terrain("Mountains", "rope");
+        } else if (rnd == 1) {
+            return new Terrain("Ocean", "boat");
+        } else if (rnd == 2) {
+            return new Terrain("Plains", "horse");
+        } else if (rnd == 3) {
+            return new Terrain("Desert", "water");
+        } else if (rnd == 4) {
+            return new Terrain("Jungle", "machete");
         } else {
-            return new Terrain("Jungle", "Machete");
+            return new Terrain("Marsh" , "boots");
         }
     }
 
