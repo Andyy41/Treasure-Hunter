@@ -102,7 +102,7 @@ public class TreasureHunter {
      */
     private void showMenu() {
         String choice = "";
-        while (!choice.equals("x")) {
+        while (!choice.equals("x") && !(hunter.getGold() <= 0)) {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
             System.out.println("***");
@@ -119,6 +119,8 @@ public class TreasureHunter {
             choice = SCANNER.nextLine().toLowerCase();
             processChoice(choice);
         }
+        System.out.println(currentTown.getLatestNews());
+        System.out.println("You ran out of money.\n\nGameOver...");
     }
 
     /**
