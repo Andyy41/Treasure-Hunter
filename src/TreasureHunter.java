@@ -16,6 +16,7 @@ public class TreasureHunter {
     private Town currentTown;
     private Hunter hunter;
     private boolean hardMode;
+    private boolean easyMode;
     /**
      * Constructs the Treasure Hunter game.
      */
@@ -24,6 +25,7 @@ public class TreasureHunter {
         currentTown = null;
         hunter = null;
         hardMode = false;
+        easyMode = false;
     }
 
     /**
@@ -47,12 +49,16 @@ public class TreasureHunter {
         // set hunter instance variable
         hunter = new Hunter(name, 20);
 
-        System.out.print("Hard mode? (y/n): ");
-        String hard = SCANNER.nextLine().toLowerCase();
-        if (hard.equals("y")) {
+        System.out.print("Easy, normal, or hard?(e/n/h): ");
+        String difficulty = SCANNER.nextLine().toLowerCase();
+        if (difficulty.equals("h")) {
             hardMode = true;
         }
-        if (hard.equals("test")){
+        if (difficulty.equals("e")) {
+            easyMode = true;
+            hunter.changeGold(20);
+        }
+        if (difficulty.equals("test")){
             hunter = new Hunter(name,106);
             hunter.buyItem("rope",1);
             hunter.buyItem("water",1);
@@ -76,6 +82,13 @@ public class TreasureHunter {
             // and the town is "tougher"
             toughness = 0.75;
         }
+        if(easyMode) {
+            // in easy mode, you get full money back for selling an item
+            markdown = 0;
+
+            // The town is much easier
+            toughness = 0.25;
+        }
 
         // note that we don't need to access the Shop object
         // outside of this method, so it isn't necessary to store it as an instance
@@ -85,7 +98,7 @@ public class TreasureHunter {
         // creating the new Town -- which we need to store as an instance
         // variable in this class, since we need to access the Town
         // object in other methods of this class
-        currentTown = new Town(shop, toughness);
+        currentTown = new Town(shop, toughness, easyMode);
 
         // calling the hunterArrives method, which takes the Hunter
         // as a parameter; note this also could have been done in the
@@ -145,4 +158,5 @@ public class TreasureHunter {
             System.out.println("Yikes! That's an invalid option! Try again.");
         }
     }
+
 }
