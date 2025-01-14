@@ -12,17 +12,16 @@ public class Town {
     private String printMessage;
     private boolean toughTown;
     private boolean easy;
-
+    private String[] treasure;
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
      *
      * @param shop The town's shoppe.
      * @param toughness The surrounding terrain.
      */
-    public Town(Shop shop, double toughness, boolean easy) {
+    public Town(Shop shop, double toughness) {
         this.shop = shop;
         this.terrain = getNewTerrain();
-        this.easy = easy;
 
         // the hunter gets set using the hunterArrives method, which
         // gets called from a client class
@@ -66,9 +65,9 @@ public class Town {
         if (canLeaveTown) {
             String item = terrain.getNeededItem();
             printMessage = "You used your " + item + " to cross the " + terrain.getTerrainName() + ".";
-            if (checkItemBreak() && !easy) {
+            if (checkItemBreak()) {
                 hunter.removeItemFromKit(item);
-                printMessage += "\nUnfortunately, you lost your " + item + ".";
+                printMessage += "\nUnfortunately, your " + item + " broke.";
             }
             return true;
         }
