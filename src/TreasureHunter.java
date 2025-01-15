@@ -154,7 +154,7 @@ public class TreasureHunter {
         } else if (choice.equals("l")) {
             currentTown.lookForTrouble();
         } else if (choice.equals("h")){
-            currentTown.lookForTreasure();
+            currentTown.huntForTreasure();
         } else if (choice.equals("x")) {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         } else {
