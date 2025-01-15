@@ -6,6 +6,7 @@
 
 public class Town {
     // instance variables
+    boolean gotGold = false;
     private Hunter hunter;
     private Shop shop;
     private Terrain terrain;
@@ -112,6 +113,26 @@ public class Town {
                 printMessage += "\nYou lost the brawl and pay " + goldDiff + " gold.";
                 hunter.changeGold(-goldDiff);
             }
+        }
+    }
+    public void lookForGold() {
+        if(hunter.hasItemInKit("shovel")) {
+            double rand = Math.random();
+            int gold = (int) (Math.random() * 20) + 1;
+            if (!gotGold) {
+                if (rand > 0.5) {
+                    printMessage = "You dug up " + gold + " gold!";
+                    hunter.changeGold(gold);
+                    gotGold = true;
+                } else {
+                    printMessage = "You dug but only found dirt";
+                    gotGold = true;
+                }
+            } else {
+                printMessage = "You've already dug for gold in this town.";
+            }
+        } else {
+            printMessage = "You can't dig for gold without a shovel.";
         }
     }
 
