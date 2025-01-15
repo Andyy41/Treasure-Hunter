@@ -66,6 +66,7 @@ public class TreasureHunter {
             hunter.buyItem("horse",1);
             hunter.buyItem("boat",1);
             hunter.buyItem("boots",1);
+            hunter.buyItem("shovel", 1);
         }
     }
 
@@ -73,18 +74,18 @@ public class TreasureHunter {
      * Creates a new town and adds the Hunter to it.
      */
     private void enterTown() {
-        double markdown = 0.25;
+        double markdown = 0.5;
         double toughness = 0.4;
         if (hardMode) {
             // in hard mode, you get less money back when you sell items
-            markdown = 0.5;
+            markdown = 0.25;
 
             // and the town is "tougher"
             toughness = 0.75;
         }
         if(easyMode) {
             // in easy mode, you get full money back for selling an item
-            markdown = 0;
+            markdown = 1;
 
             // The town is much easier
             toughness = 0.25;
@@ -126,6 +127,7 @@ public class TreasureHunter {
             System.out.println("(M)ove on to a different town.");
             System.out.println("(L)ook for trouble!");
             System.out.println("(H)unt for treasure!");
+            System.out.println("(D)ig for gold!");
             System.out.println("Give up the hunt and e(X)it." + Colors.RESET);
             System.out.println();
             System.out.print("What's your next move? ");
@@ -154,7 +156,9 @@ public class TreasureHunter {
         } else if (choice.equals("l")) {
             currentTown.lookForTrouble();
         } else if (choice.equals("h")){
-            currentTown.huntForTreasure();
+            //currentTown.lookForTreasure();
+        } else if (choice.equals("d")) {
+            currentTown.lookForGold();
         } else if (choice.equals("x")) {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         } else {
