@@ -167,6 +167,7 @@ public class Town {
             return list[Treasure];
     }
     public String huntForTreasure(){
+        printMessage = "";
         String set = setTreasure();
         int chance = (int) (Math.random()*101);
             if (chance <= 80){
