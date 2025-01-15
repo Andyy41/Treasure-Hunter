@@ -13,6 +13,7 @@ public class Town {
     private String printMessage;
     private boolean toughTown;
     private boolean easy;
+    private String [] Treasure;
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
      *
@@ -163,7 +164,7 @@ public class Town {
 
     private String setTreasure() {
         String[] list = {"a", "b", "c", "d", "e", "f"};
-        int Treasure = (int) (Math.random() * 7);
+        int Treasure = (int) (Math.random() * 6);
             return list[Treasure];
     }
     public String huntForTreasure(){
@@ -171,7 +172,9 @@ public class Town {
         int chance = (int) (Math.random()*101);
             if (chance <= 80){
                 System.out.println("You found dust!");
-            } else System.out.println("You found " + set);
+            } else
+                System.out.println("You found " + set);
+            add(set);
         return set;
     }
 

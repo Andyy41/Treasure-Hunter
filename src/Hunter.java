@@ -9,7 +9,7 @@ public class Hunter {
     private String hunterName;
     private String[] kit;
     private int gold;
-    public String treasure;
+    public String[] treasure;
 
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -192,9 +192,13 @@ public class Hunter {
         }
         return -1;
     }
-    public int getGold() {
-        return gold;
+    private boolean addTreasure(String item) {
+        if (!hasItemInKit(item)) {
+            int idx = emptyPositionInKit();
+            treasure[idx] = item;
+            return true;
+        }
+        return false;
     }
-
 
 }
