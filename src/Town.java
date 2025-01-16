@@ -165,18 +165,19 @@ public class Town {
     private String setTreasure() {
         String[] list = {"a", "b", "c", "d", "e", "f"};
         int Treasure = (int) (Math.random() * 6);
-            return list[Treasure];
+        String x = list[Treasure];
+            return x;
     }
-    public String huntForTreasure(){
-        printMessage = "";
+    public void huntForTreasure(){
         String set = setTreasure();
         int chance = (int) (Math.random()*101);
             if (chance <= 80){
                 System.out.println("You found dust!");
-            } else
-                System.out.println("You found " + set);
-            add(set);
-        return set;
+            } else System.out.println("You found " + set);
+            hunter.Treasure(set);
+            if (hunter.hasTreasureInBag(set) == true){
+                System.out.println("you have already searched this town");
+            }
     }
 
     /**

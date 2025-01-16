@@ -9,7 +9,7 @@ public class Hunter {
     private String hunterName;
     private String[] kit;
     private int gold;
-    public String[] treasure;
+    private String[] treasure;
 
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -21,6 +21,7 @@ public class Hunter {
         this.hunterName = hunterName;
         kit = new String[7]; // only 5 possible items can be stored in kit
         gold = startingGold;
+        treasure = new String[6];
     }
 
     //Accessors
@@ -179,6 +180,10 @@ public class Hunter {
         return true;
     }
 
+    public int getGold() {
+        return gold;
+    }
+
     /**
      * Finds the first index where there is a null value.
      *
@@ -192,13 +197,48 @@ public class Hunter {
         }
         return -1;
     }
+
+    public boolean Treasure(String item) {
+        if (!hasTreasureInBag(item)) {
+            return false;
+        }
+        addTreasure(item);
+        return true;
+    }
+
+    public boolean hasTreasureInBag(String item) {
+        for (String tmpItem : treasure) {
+            if (item.equals(tmpItem)) {
+                return true;
+            }
+        }
+        return false;
+    }
     private boolean addTreasure(String item) {
-        if (!hasItemInKit(item)) {
-            int idx = emptyPositionInKit();
+        if (!(hasTreasureInBag(item))){
+            int idx = emptyPositionInBag();
             treasure[idx] = item;
             return true;
         }
         return false;
+    }
+    private int emptyPositionInBag() {
+        for (int i = 0; i < treasure.length; i++) {
+            if (treasure[i] == null) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    public String getTreasure() {
+        String printableTreasure = "";
+        String space = " ";
+        for (String item : treasure) {
+            if (item != null) {
+                printableTreasure += item + space;
+            }
+        }
+        return printableTreasure;
     }
 
 }
