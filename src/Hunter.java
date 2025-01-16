@@ -214,7 +214,7 @@ public class Hunter {
         }
         return false;
     }
-    private boolean addTreasure(String item) {
+    public boolean addTreasure(String item) {
         if (!(hasTreasureInBag(item))){
             int idx = emptyPositionInBag();
             treasure[idx] = item;

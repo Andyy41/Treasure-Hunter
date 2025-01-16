@@ -13,7 +13,7 @@ public class Town {
     private String printMessage;
     private boolean toughTown;
     private boolean easy;
-    private String [] Treasure;
+    private String townTreasure;
     private boolean sam;
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -26,6 +26,7 @@ public class Town {
         this.terrain = getNewTerrain();
         this.easy = easy;
         sam = samurai;
+        this.townTreasure = setTreasure();
         // the hunter gets set using the hunterArrives method, which
         // gets called from a client class
         hunter = null;
@@ -173,16 +174,16 @@ public class Town {
         return list[Treasure];
     }
 
-    public void huntForTreasure(){
-        String set = setTreasure();
-        int chance = (int) (Math.random()*101);
-            if (chance <= 80){
-                System.out.println("You found dust!");
-            } else System.out.println("You found " + set);
-            hunter.Treasure(set);
-            if (hunter.hasTreasureInBag(set) == true){
-                System.out.println("you have already searched this town");
-            }
+    public void huntForTreasure() {
+        int chance = (int) (Math.random() * 101);
+        if (chance <= 80) {
+            System.out.println("You found dust!");
+        } else if (!hunter.addTreasure(townTreasure)){
+            System.out.println("you have already searched this town");
+        } else System.out.println("You found " + townTreasure);
+        hunter.Treasure(townTreasure);
+
+
     }
 
     /**
