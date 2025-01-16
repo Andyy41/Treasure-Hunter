@@ -231,7 +231,8 @@ public class Hunter {
         return -1;
     }
     public String getTreasure() {
-        String printableTreasure = "";
+
+        String printableTreasure = "Treasure Found: ";
         String space = " ";
         for (String item : treasure) {
             if (item != null) {
