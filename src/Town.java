@@ -14,17 +14,18 @@ public class Town {
     private boolean toughTown;
     private boolean easy;
     private String [] Treasure;
+    private boolean sam;
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
      *
      * @param shop The town's shoppe.
      * @param toughness The surrounding terrain.
      */
-    public Town(Shop shop, double toughness, boolean easy) {
+    public Town(Shop shop, double toughness, boolean easy, boolean samurai) {
         this.shop = shop;
         this.terrain = getNewTerrain();
         this.easy = easy;
-
+        sam = samurai;
         // the hunter gets set using the hunterArrives method, which
         // gets called from a client class
         hunter = null;
@@ -101,7 +102,7 @@ public class Town {
         }
         if (Math.random() > noTroubleChance) {
             printMessage = "You couldn't find any trouble";
-        } else {
+        } else if (!hunter.hasItemInKit("sword")) {
             printMessage = Colors.RED + "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n";
             int goldDiff = (int) (Math.random() * 10) + 1;
             if (Math.random() > noTroubleChance) {
@@ -113,6 +114,10 @@ public class Town {
                 printMessage += "\nYou lost the brawl and pay " + goldDiff + " gold.";
                 hunter.changeGold(-goldDiff);
             }
+        } else {
+            int goldDiff = (int) (Math.random() * 10) + 1;
+            printMessage = "The brawler seeing your sword thinks to himself, Nah I'd Lose. He runs away leaving " + goldDiff + " gold behind.";
+            hunter.changeGold(goldDiff);
         }
     }
     public void lookForGold() {
@@ -175,7 +180,7 @@ public class Town {
                 System.out.println("You found dust!");
             } else
                 System.out.println("You found " + set);
-            add(set);
+//            add(set);
         return set;
     }
 
