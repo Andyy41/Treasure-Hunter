@@ -170,9 +170,9 @@ public class Town {
     private String setTreasure() {
         String[] list = {"a", "b", "c", "d", "e", "f"};
         int Treasure = (int) (Math.random() * 6);
-        int num = Treasure;
-        return list[num];
+        return list[Treasure];
     }
+
     public void huntForTreasure(){
         String set = setTreasure();
         int chance = (int) (Math.random()*101);
