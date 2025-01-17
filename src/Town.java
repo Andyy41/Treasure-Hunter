@@ -170,7 +170,7 @@ public class Town {
     }
 
     private String setTreasure() {
-        String[] list = {"a", "b", "c", "d", "e", "f"};
+        String[] list = {"go", "jo", "Six eyes", "Blue", "Red", "Infinity"};
         int Treasure = (int) (Math.random() * 6);
         return list[Treasure];
     }
