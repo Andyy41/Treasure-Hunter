@@ -177,7 +177,7 @@ public class Town {
 
     public void huntForTreasure() {
         int chance = (int) (Math.random() * 101);
-        if (chance <= 80 && !searched) {
+        if (chance <= 50 && !searched) {
             System.out.println("You found dust!");
             searched = true;
             printMessage = "";
