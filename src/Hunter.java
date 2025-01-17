@@ -233,13 +233,14 @@ public class Hunter {
     public String getTreasure() {
         String printableTreasure = "Treasure Found: ";
         String space = " ";
+        if (treasure[0] == null){
+            return "Treasure Found: None";
+        }
         for (String item : treasure) {
-            if(item == null){
-                return "Treasure Found: None";
-            }
-            else {
-               printableTreasure += item + space;
-            }
-        } return printableTreasure;
+            if(item != null){
+                printableTreasure += item + space;
+            } return printableTreasure;
+        }
+        return printableTreasure;
     }
 }
