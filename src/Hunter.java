@@ -199,7 +199,7 @@ public class Hunter {
     }
 
     public boolean Treasure(String item) {
-        if (!hasTreasureInBag(item)) {
+        if (hasTreasureInBag(item)) {
             return false;
         }
         addTreasure(item);
