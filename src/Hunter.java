@@ -243,4 +243,14 @@ public class Hunter {
         }
         return printableTreasure;
     }
+
+    public boolean winCheck(){
+        for (int i =0; i < treasure.length; i++){
+            if (treasure[i] == null){
+                return false;
+            }
+        } return true;
+    }
+
+
 }
