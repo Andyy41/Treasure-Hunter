@@ -180,14 +180,17 @@ public class Town {
         if (chance <= 80 && !searched) {
             System.out.println("You found dust!");
             searched = true;
+            printMessage = "";
         } else if (searched){
             System.out.println("you have already searched this town");
+            printMessage = "";
         } else if (hunter.hasTreasureInBag(townTreasure)) {
             System.out.println("You found " + townTreasure + " but you already have it.");
         } else {
             System.out.println("You found " + townTreasure);
             hunter.Treasure(townTreasure);
             searched = true;
+            printMessage = "";
         }
     }
 

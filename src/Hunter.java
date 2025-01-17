@@ -238,8 +238,8 @@ public class Hunter {
         }
         for (String item : treasure) {
             if(item != null){
-                printableTreasure += item + space;
-            } return printableTreasure;
+                printableTreasure += item + "," + space;
+            }
         }
         return printableTreasure;
     }

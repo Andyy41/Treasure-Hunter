@@ -140,7 +140,7 @@ public class TreasureHunter {
             choice = SCANNER.nextLine().toLowerCase();
             processChoice(choice);
         }
-        if (!choice.equals("x")) {
+        if (!choice.equals("x") && !hunter.winCheck()) {
             System.out.println(currentTown.getLatestNews());
             System.out.println("You ran out of money.\n\nGameOver...");
         }
