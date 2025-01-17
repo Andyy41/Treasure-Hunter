@@ -15,6 +15,7 @@ public class Town {
     private boolean easy;
     private String townTreasure;
     private boolean sam;
+    private boolean searched = false;
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
      *
@@ -71,7 +72,7 @@ public class Town {
             printMessage = "You used your " + item + " to cross the " + terrain.getTerrainName() + ".";
             if (checkItemBreak() && !easy) {
                 hunter.removeItemFromKit(item);
-                printMessage += "\nUnfortunately, your " + item + " broke.";
+                printMessage += "\nUnfortunately, you lost your " + item + ".";
             }
             return true;
         }
@@ -176,14 +177,18 @@ public class Town {
 
     public void huntForTreasure() {
         int chance = (int) (Math.random() * 101);
-        if (chance <= 80) {
+        if (chance <= 80 && !searched) {
             System.out.println("You found dust!");
-        } else if (!hunter.addTreasure(townTreasure)){
+            searched = true;
+        } else if (searched){
             System.out.println("you have already searched this town");
-        } else System.out.println("You found " + townTreasure);
-        hunter.Treasure(townTreasure);
-
-
+        } else if (hunter.hasTreasureInBag(townTreasure)) {
+            System.out.println("You found " + townTreasure + " but you already have it.");
+        } else {
+            System.out.println("You found " + townTreasure);
+            hunter.Treasure(townTreasure);
+            searched = true;
+        }
     }
 
     /**
